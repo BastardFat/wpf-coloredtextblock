@@ -10,7 +10,14 @@
     Width="525"
     Height="350"
     mc:Ignorable="d">
-    <Grid>
-        <ctb:ColoredTextBlock x:Name="ColoredTextBlock" />
-    </Grid>
+    <Window.DataContext>
+        <local:ViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <ctb:StringToColoredStringConverter x:Key="StringToColoredStringConverter"/>
+    </Window.Resources>
+    <StackPanel>
+        <ctb:ColoredTextBlock RichText="{Binding ColoredRepresentation}"/>
+        <ctb:ColoredTextBlock RichText="{Binding StringRepresentation, Converter={StaticResource StringToColoredStringConverter}}"/>
+    </StackPanel>
 </Window>
