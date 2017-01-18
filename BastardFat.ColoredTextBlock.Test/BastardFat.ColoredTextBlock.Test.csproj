@@ -94,6 +94,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BastardFat.ColoredTextBlock.Controls\BastardFat.ColoredTextBlock.Controls.csproj">
+      <Project>{14445ba5-2548-4a92-bd8c-652f2038fdbd}</Project>
+      <Name>BastardFat.ColoredTextBlock.Controls</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

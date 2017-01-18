@@ -12,7 +12,7 @@ namespace BastardFat.ColoredTextBlock.Controls
 {
     public class ColoredTextBlock : RichTextBox
     {
-        public const string RichTextPropertyName = "RichText";
+        public const string RichTextPropertyName = nameof(RichText);
 
         public static readonly DependencyProperty RichTextProperty =
             DependencyProperty.Register(RichTextPropertyName,
@@ -20,7 +20,7 @@ namespace BastardFat.ColoredTextBlock.Controls
                                         typeof(RichTextBox),
                                         new FrameworkPropertyMetadata(
                                             default(ColoredTextString),
-                                           FrameworkPropertyMetadataOptions.AffectsMeasure |
+                                            FrameworkPropertyMetadataOptions.AffectsMeasure |
                                             FrameworkPropertyMetadataOptions.AffectsRender,
                                             new PropertyChangedCallback
                                                 (RichTextPropertyChanged)));
@@ -45,8 +45,8 @@ namespace BastardFat.ColoredTextBlock.Controls
         public ColoredTextBlock()
         {
             IsReadOnly = true;
-            HorizontalContentAlignment = HorizontalAlignment.Stretch;
-            HorizontalAlignment = HorizontalAlignment.Stretch;
+            IsHitTestVisible = false;
+            Focusable = false;
             Background = new SolidColorBrush { Opacity = 0 };
             BorderThickness = new Thickness(0);
         }
@@ -63,6 +63,8 @@ namespace BastardFat.ColoredTextBlock.Controls
         {
             string RTF = ((ColoredTextString) dependencyPropertyChangedEventArgs.NewValue).ToString();
             ((ColoredTextBlock) dependencyObject).RawText = ((ColoredTextString) dependencyPropertyChangedEventArgs.NewValue).RawText;
+            ((RichTextBox) dependencyObject).SelectAll();
+            ((RichTextBox) dependencyObject).Selection.Text = String.Empty;
             using (var stream = new MemoryStream(Encoding.Default.GetBytes(RTF)))
                 ((RichTextBox) dependencyObject).Selection.Load(stream, DataFormats.Rtf);
         }

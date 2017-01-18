@@ -10,7 +10,7 @@ namespace BastardFat.ColoredTextBlock.Controls
     public class ColoredTextString
     {
         private const string HeaderBeforeColors = @"{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}{\colortbl ;";
-        private const string HeaderAfterColors = @";}\viewkind4\uc1\pard\sa200\sl276\slmult1\fs";//22 ";
+        private const string HeaderAfterColors = @";}\viewkind4\uc1\pard\sa200\sl276\slmult1\fs";
         private const string Ender = @"\lang9}";
 
         public ColoredTextString() : this(10) { }
